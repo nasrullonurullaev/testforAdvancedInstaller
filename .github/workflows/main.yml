@@ -25,3 +25,14 @@ jobs:
         with:
           name: setup
           path: ${{ github.workspace }}\setup\setup.msi
+      - name: Release
+        if: ${{ success() }}
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Test AdvancedInstaller with GithubActions
+          tag_name: 1.0.0
+          body_path: redis_latest_body.txt
+          make_latest: ${{ inputs.make_latest }}
+          prerelease: ${{ inputs.prerelease }}
+          files: ${{ github.workspace }}\setup\setup.msi
