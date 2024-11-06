@@ -39,6 +39,9 @@ jobs:
         
       - name: Display extracted files
         run: dir "${{ github.workspace }}"
+
+      - name: Display extracted files
+        run: dir "${{ github.workspace }}//TestForGA-SetupFiles"
         
       - name: Publish setup artifact
         uses: actions/upload-artifact@v4
