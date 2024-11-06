@@ -26,17 +26,15 @@ jobs:
         with:
           advinst-version: '20.7.1'
           advinst-license: ${{ secrets.ADVINST_LICENSE_KEY }}
-          advinst-enable-automation: 'true'
-          aip-path: ${{ github.workspace }}\TestForGA.aip
-          aip-build-name: DefaultBuild
-          aip-package-name: setup.msi
-          aip-output-dir:  ${{ github.workspace }}\setup
-          aip-commands: |
-            SetProperty FOO="foo"
-            SetVersion 1.4.0
-            SetSig
-            SetDigitalCertificateFile -file "${{ env.PFX_PATH }}" -password nasrullo
 
+          
+
+      - name: Copy Frontend Files
+        env:
+          AdvancedInstaller: advinst
+        run: .\build.bat
+
+        
       - name: Publish setup artifact
         uses: actions/upload-artifact@v4
         with:
