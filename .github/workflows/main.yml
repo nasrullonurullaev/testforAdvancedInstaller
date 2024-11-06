@@ -26,14 +26,19 @@ jobs:
         with:
           advinst-version: '20.7.1'
           advinst-license: ${{ secrets.ADVINST_LICENSE_KEY }}
-
+      
+      
+      - name: Display extracted files
+        run: dir "${{ github.workspace }}"
           
 
       - name: Copy Frontend Files
         env:
           AdvancedInstaller: advinst
         run: .\build.bat
-
+        
+      - name: Display extracted files
+        run: dir "${{ github.workspace }}"
         
       - name: Publish setup artifact
         uses: actions/upload-artifact@v4
