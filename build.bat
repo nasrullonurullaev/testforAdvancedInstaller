@@ -1,0 +1,1 @@
+%AdvancedInstaller% /rebuild TestForGA.aip
